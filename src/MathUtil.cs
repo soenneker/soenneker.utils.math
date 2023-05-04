@@ -68,6 +68,9 @@ public static class MathUtil
     [Pure]
     public static decimal GetLinearSlopeValue(decimal first, decimal second, decimal point)
     {
+        if (first == 0)
+            return 0;
+
         decimal slope = second / first;
         decimal yIntercept = slope * first;
         decimal result = -slope * point + yIntercept;
