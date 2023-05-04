@@ -64,4 +64,14 @@ public static class MathUtil
 
         return result;
     }
+
+    [Pure]
+    public static decimal GetLinearSlopeValue(decimal first, decimal second, decimal point)
+    {
+        decimal slope = second / first;
+        decimal yIntercept = slope * first;
+        decimal result = -slope * point + yIntercept;
+
+        return result;
+    }
 }
