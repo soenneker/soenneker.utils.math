@@ -1,6 +1,8 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using Soenneker.Extensions.Decimal;
 using Soenneker.Tests.Unit;
+using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
 
