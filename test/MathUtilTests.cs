@@ -57,6 +57,7 @@ public class MathUtilTests : UnitTest
     [InlineData(0, .25, .25, 0)]
     [InlineData(.50, 0, .25, 0)]
     [InlineData(.50, .25, 0, .25)]
+    [InlineData(.40, .50, .60, 0)]
     public void GetLinearSlopeValue_should_not_throw(decimal first, decimal second, decimal point, decimal expected)
     {
         decimal result = MathUtil.GetLinearSlopeValue(first, second, point);

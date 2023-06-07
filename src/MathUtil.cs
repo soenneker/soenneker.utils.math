@@ -65,6 +65,12 @@ public static class MathUtil
         return result;
     }
 
+    /// <summary>
+    /// 1. Finds the slope (second / first) <para/>
+    /// 2. Finds the yIntercept (slope * first) <para/>
+    /// 3. Returns negative slope * point + yIntercept
+    /// </summary>
+    /// <remarks>Will never return a negative value (0)</remarks>
     [Pure]
     public static decimal GetLinearSlopeValue(decimal first, decimal second, decimal point)
     {
@@ -75,6 +81,6 @@ public static class MathUtil
         decimal yIntercept = slope * first;
         decimal result = -slope * point + yIntercept;
 
-        return result;
+        return result < 0 ? 0 : result;
     }
 }
