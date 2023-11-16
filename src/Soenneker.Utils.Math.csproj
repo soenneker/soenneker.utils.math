@@ -9,7 +9,7 @@
 
     <PropertyGroup>
         <Description>Some useful math related utility methods</Description>
-        <Version Condition="'$(BUILD_VERSION)' == ''">2.0.0</Version>
+        <Version Condition="'$(BUILD_VERSION)' == ''">2.1.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.Utils.Math</AssemblyName>
         <PackageId>Soenneker.Utils.Math</PackageId>
