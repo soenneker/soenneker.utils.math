@@ -39,6 +39,6 @@
 
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 
-        <PackageReference Include="Soenneker.Extensions.Decimal" Version="2.0.80" />
+        <PackageReference Include="Soenneker.Extensions.Decimal" Version="2.1.4" />
     </ItemGroup>
 </Project>
