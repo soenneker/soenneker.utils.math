@@ -8,5 +8,5 @@
 ## Installation
 
 ```
-Install-Package Soenneker.Utils.Math
+dotnet add package Soenneker.Utils.Math
 ```
