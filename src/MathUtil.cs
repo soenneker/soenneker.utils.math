@@ -46,8 +46,7 @@ public static class MathUtil
 
         decimal sum = values.Sum();
 
-        decimal result = sum / values.Length;
-        return result;
+        return sum / values.Length;
     }
 
     /// <summary>
@@ -60,9 +59,7 @@ public static class MathUtil
         if (final == 0)
             final = 0.00001M;
 
-        decimal result = (final - initial) / final;
-
-        return result;
+        return (final - initial) / final;
     }
 
     /// <summary>
