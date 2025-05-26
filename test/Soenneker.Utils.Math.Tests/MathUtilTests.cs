@@ -1,5 +1,5 @@
 using System;
-using FluentAssertions;
+using AwesomeAssertions;
 using Soenneker.Extensions.Decimal;
 using Soenneker.Tests.Unit;
 using System.Collections.Generic;
