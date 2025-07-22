@@ -80,4 +80,30 @@ public static class MathUtil
 
         return result < 0 ? 0 : result;
     }
+
+    [Pure]
+    public static double Sigmoid(double x)
+    {
+        if (x >= 0)
+        {
+            double expNegX = System.Math.Exp(-x);
+            return 1.0 / (1.0 + expNegX);
+        }
+        else
+        {
+            double expX = System.Math.Exp(x);
+            return expX / (1.0 + expX);
+        }
+    }
+
+    /// <summary>
+    /// Not a real sigmoid, but fast and S-shaped
+    /// </summary>
+    /// <param name="x"></param>
+    /// <returns></returns>
+    [Pure]
+    public static float SigmoidFast(float x)
+    {
+        return x / (1f + MathF.Abs(x));
+    }
 }
