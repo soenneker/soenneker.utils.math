@@ -3,18 +3,17 @@ using AwesomeAssertions;
 using Soenneker.Extensions.Decimal;
 using Soenneker.Tests.Unit;
 using System.Collections.Generic;
-using Xunit;
 
 
 namespace Soenneker.Utils.Math.Tests;
 
 public class MathUtilTests : UnitTest
 {
-    public MathUtilTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
+    public MathUtilTests( testOutputHelper) : base(testOutputHelper)
     {
     }
 
-    [Fact]
+    [Test]
     public void GetMean_should_return_mean()
     {
         const int value1 = 10;
@@ -23,7 +22,7 @@ public class MathUtilTests : UnitTest
         MathUtil.GetMean(value1, value2).Should().Be(15);
     }
 
-    [Fact]
+    [Test]
     public void GetWeightedMean_should_return_mean()
     {
         const int value1 = 100;
@@ -36,7 +35,7 @@ public class MathUtilTests : UnitTest
         result.Should().Be(92);
     }
 
-    [Fact]
+    [Test]
     public void GetWeightedMean_with_tuples_should_return_mean()
     {
         var values = new List<Tuple<decimal, decimal>>
