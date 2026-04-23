@@ -9,7 +9,7 @@ namespace Soenneker.Utils.Math.Tests;
 
 public class MathUtilTests : UnitTest
 {
-    public MathUtilTests( testOutputHelper) : base(testOutputHelper)
+    public MathUtilTests() : base()
     {
     }
 
@@ -48,15 +48,15 @@ public class MathUtilTests : UnitTest
         result.Should().Be(92);
     }
 
-    [Theory]
-    [InlineData(.50, .25, .40, .05)]
-    [InlineData(.50, .25, .30, .10)]
-    [InlineData(.50, .25, .20, .15)]
-    [InlineData(.50, .25, .10, .20)]
-    [InlineData(0, .25, .25, 0)]
-    [InlineData(.50, 0, .25, 0)]
-    [InlineData(.50, .25, 0, .25)]
-    [InlineData(.40, .50, .60, 0)]
+    [Test]
+    [Arguments(.50, .25, .40, .05)]
+    [Arguments(.50, .25, .30, .10)]
+    [Arguments(.50, .25, .20, .15)]
+    [Arguments(.50, .25, .10, .20)]
+    [Arguments(0, .25, .25, 0)]
+    [Arguments(.50, 0, .25, 0)]
+    [Arguments(.50, .25, 0, .25)]
+    [Arguments(.40, .50, .60, 0)]
     public void GetLinearSlopeValue_should_not_throw(decimal first, decimal second, decimal point, decimal expected)
     {
         decimal result = MathUtil.GetLinearSlopeValue(first, second, point);
@@ -64,3 +64,4 @@ public class MathUtilTests : UnitTest
         result.Should().Be(expected);
     }
 }
+
