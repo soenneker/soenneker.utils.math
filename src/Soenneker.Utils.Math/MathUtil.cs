@@ -71,6 +71,12 @@ public static class MathUtil
         return roundDigits is int d ? weightedAverage.ToRounded(d) : weightedAverage;
     }
 
+    /// <summary>
+    /// Gets weighted mean.
+    /// </summary>
+    /// <param name="valueWeights">The value weights.</param>
+    /// <param name="roundDigits">The round digits.</param>
+    /// <returns>The result of the operation.</returns>
     [Pure]
     public static decimal GetWeightedMean(IReadOnlyList<Tuple<decimal, decimal>> valueWeights, int? roundDigits = null)
     {
