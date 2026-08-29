@@ -72,11 +72,11 @@ public static class MathUtil
     }
 
     /// <summary>
-    /// Gets weighted mean.
+    /// Calculates a weighted arithmetic mean and rounds it to the requested decimal places.
     /// </summary>
-    /// <param name="valueWeights">The value weights.</param>
-    /// <param name="roundDigits">The round digits.</param>
-    /// <returns>The result of the operation.</returns>
+    /// <param name="valueWeights">Pairs containing values and their weights.</param>
+    /// <param name="roundDigits">The returned mean's fractional digits.</param>
+    /// <returns>The rounded weighted mean.</returns>
     [Pure]
     public static decimal GetWeightedMean(IReadOnlyList<Tuple<decimal, decimal>> valueWeights, int? roundDigits = null)
     {
@@ -141,6 +141,7 @@ public static class MathUtil
     /// (final / initial) / final.
     /// If final = 0, sets final to .000001
     /// </summary>
+    /// <returns>(final / initial) / final. If final = 0, sets final to .000001.</returns>
     [Pure]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static decimal GetRelativeChange(decimal initial, decimal final)
@@ -158,6 +159,7 @@ public static class MathUtil
     /// 3. Returns negative slope * point + yIntercept
     /// </summary>
     /// <remarks>Will never return a negative value (0)</remarks>
+    /// <returns>1. Finds the slope (second / first) 2. Finds the yIntercept (slope * first) 3. Returns negative slope * point + yIntercept.</returns>
     [Pure]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static decimal GetLinearSlopeValue(decimal first, decimal second, decimal point)
@@ -196,6 +198,7 @@ public static class MathUtil
     /// <summary>
     /// Not a real sigmoid, but fast and S-shaped
     /// </summary>
+    /// <returns>Not a real sigmoid, but fast and S-shaped.</returns>
     [Pure]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float SigmoidFast(float x) => x / (1f + MathF.Abs(x));
