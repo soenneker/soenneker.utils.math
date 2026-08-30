@@ -129,7 +129,7 @@ public static class MathUtil
     /// <summary>
     /// Calculates the arithmetic mean of the specified decimal values.
     /// </summary>
-    /// <remarks>If the array is empty, the method may throw an exception. This method is suitable for
+    /// <remarks>If the array is empty, the method returns zero. This method is suitable for
     /// financial or high-precision calculations where decimal accuracy is required.</remarks>
     /// <param name="values">An array of decimal values for which to compute the mean. The array must contain at least one element.</param>
     /// <returns>The arithmetic mean of the provided values.</returns>
@@ -138,15 +138,13 @@ public static class MathUtil
     public static decimal GetMean(params decimal[] values) => GetMean(values.AsSpan());
 
     /// <summary>
-    /// (final / initial) / final.
-    /// If final = 0, sets final to .000001
+    /// Calculates <c>(final - initial) / final</c>. If <paramref name="final"/> is zero, substitutes <c>0.00001</c>.
     /// </summary>
-    /// <returns>(final / initial) / final. If final = 0, sets final to .000001.</returns>
+    /// <returns>The change relative to the final value.</returns>
     [Pure]
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static decimal GetRelativeChange(decimal initial, decimal final)
     {
-        // Note: your comment says .000001 but the code used 0.00001M. Keeping behavior.
         if (final == 0m)
             final = 0.00001m;
 

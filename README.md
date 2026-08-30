@@ -20,11 +20,45 @@ using Soenneker.Utils.Math;
 
 Call the static `MathUtil` methods directly; no dependency-injection registration is required.
 
-## Common operations
+## Means
 
-- `GetWeightedMean()` - Calculates the weighted mean of two values using their respective weights, with optional rounding to a specified number of decimal digits. If both weights are zero, the method will throw a division by zero exception.
-- `GetMean()` - Calculates the arithmetic mean of the specified sequence of decimal values. This method does not throw an exception for empty sequences; instead, it returns 0.
-- `GetRelativeChange()` - (final / initial) / final. If final = 0, sets final to .000001.
-- `GetLinearSlopeValue()` - 1. Finds the slope (second / first) 2. Finds the yIntercept (slope * first) 3. Returns negative slope * point + yIntercept.
-- `Sigmoid()` - Computes the sigmoid activation function for the specified input value.
-- `SigmoidFast()` - Not a real sigmoid, but fast and S-shaped.
+```csharp
+decimal weighted = MathUtil.GetWeightedMean(
+    valueA: 80m,
+    valueB: 95m,
+    weightA: 1m,
+    weightB: 2m,
+    roundDigits: 2); // 90
+
+decimal mean = MathUtil.GetMean(10m, 20m, 30m); // 20
+```
+
+The weighted overloads calculate `sum(value * weight) / sum(weight)`. They do not reject negative
+weights. An empty collection returns `0`; a non-empty collection whose weights sum to zero throws
+`DivideByZeroException`. `GetMean` also returns `0` for empty input. Decimal accumulation can throw
+`OverflowException` for values outside the decimal range.
+
+## Relative and linear values
+
+```csharp
+decimal relative = MathUtil.GetRelativeChange(initial: 80m, final: 100m); // 0.2
+decimal remaining = MathUtil.GetLinearSlopeValue(first: 10m, second: 100m, point: 4m); // 60
+```
+
+`GetRelativeChange` uses `(final - initial) / final`; this is not the conventional
+`(final - initial) / initial` formula. When `final` is zero, the method substitutes `0.00001m`
+before calculating.
+
+`GetLinearSlopeValue` evaluates `second - (second / first * point)` and clamps negative results to
+zero. It also returns zero immediately when either `first` or `second` is zero.
+
+## Sigmoid functions
+
+```csharp
+double logistic = MathUtil.Sigmoid(2.0);   // standard logistic value in (0, 1)
+float fast = MathUtil.SigmoidFast(-2.0f);  // approximation in (-1, 1)
+```
+
+`Sigmoid` computes the numerically stable logistic function `1 / (1 + exp(-x))`.
+`SigmoidFast` computes `x / (1 + abs(x))`; it is S-shaped but is not a logistic approximation on
+the same output range.
