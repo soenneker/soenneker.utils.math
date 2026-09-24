@@ -40,6 +40,6 @@
         <None Include="..\..\README.md" Pack="true" PackagePath="\" />
         <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
         <None Include="..\..\icon.png" Pack="true" PackagePath="\" />
-        <PackageReference Include="Soenneker.Extensions.Decimal" Version="4.0.626" />
+        <PackageReference Include="Soenneker.Extensions.Decimal" Version="4.0.627" />
     </ItemGroup>
 </Project>
